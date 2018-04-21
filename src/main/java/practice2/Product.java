@@ -26,6 +26,6 @@ public class Product {
     }
 
     public BigDecimal getDiscountedPrice() {
-        return price.multiply(availableDiscounts);
+        return price.subtract(price.multiply(availableDiscounts));
     }
 }
