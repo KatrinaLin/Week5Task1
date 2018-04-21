@@ -18,8 +18,7 @@ public class Receipt {
         for (Product product : products) {
             OrderItem curItem = findOrderItemByProduct(items, product);
 
-            BigDecimal reducedPrice = product.getPrice()
-                    .multiply(product.getDiscountRate())
+            BigDecimal reducedPrice = product.getDiscountedPrice()
                     .multiply(new BigDecimal(curItem.getCount()));
 
             subTotal = subTotal.subtract(reducedPrice);

@@ -24,4 +24,8 @@ public class Product {
     public long getCode() {
         return code;
     }
+
+    public BigDecimal getDiscountedPrice() {
+        return price.multiply(availableDiscounts);
+    }
 }
