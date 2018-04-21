@@ -16,24 +16,8 @@ public class Order {
     }
 
     public BigDecimal calculate() {
-        BigDecimal subTotal = new BigDecimal(0);
+        PriceCaculator pc = new PriceCaculator();
 
-        // Total up line items
-        for (OrderLineItem lineItem : orderLineItemList) {
-            subTotal = subTotal.add(lineItem.getPrice());
-        }
-
-        // Subtract discounts
-        for (BigDecimal discount : discounts) {
-            subTotal = subTotal.subtract(discount);
-        }
-
-        // calculate tax
-        BigDecimal tax = subTotal.multiply(this.tax);
-
-        // calculate GrandTotal
-        BigDecimal grandTotal = subTotal.add(tax);
-
-        return grandTotal;
+        return pc.calculate(orderLineItemList, discounts, tax);
     }
 }
